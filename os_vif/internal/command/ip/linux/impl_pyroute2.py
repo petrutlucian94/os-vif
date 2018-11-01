@@ -10,11 +10,15 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import os
+
 from oslo_log import log as logging
 from oslo_utils import excutils
-from pyroute2 import iproute
-from pyroute2.netlink import exceptions as ipexc
-from pyroute2.netlink.rtnl import ifinfmsg
+
+if os.name != 'nt':
+    from pyroute2 import iproute
+    from pyroute2.netlink import exceptions as ipexc
+    from pyroute2.netlink.rtnl import ifinfmsg
 
 from os_vif import exception
 from os_vif.internal.command.ip import ip_command
